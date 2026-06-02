@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.9
+
+- Adds Settings language selection for English and Italian.
+- Ships interface translations as file-based JSON locales.
+- Pins the add-on build to MG4 Mate commit `7280fb4`.
+
 ## 1.0.8
 
 - Adds Home Assistant history import for existing MG4 positions, trips and charge sessions.
