@@ -5,8 +5,8 @@
 ARG BUILD_FROM
 FROM ${BUILD_FROM}
 
-# Version of Mate to install (git tag or branch in the main repo/fork).
-ARG MATE_REF=main
+# Version of Mate to install (git tag, branch or commit in the main repo/fork).
+ARG MATE_REF=a0ba8ba
 
 ENV PYTHONUNBUFFERED=1 \
     DB_PATH=/data/mg4_mate.db
@@ -17,8 +17,8 @@ WORKDIR /app
 # lacks a musl build, and are removed in the same layer to keep the image small.
 RUN apk add --no-cache bash \
     && apk add --no-cache --virtual .build-deps git build-base libffi-dev openssl-dev \
-    && git clone --depth 1 --branch "${MATE_REF}" \
-       https://github.com/ghianciulu/mg4-mate.git /src \
+    && git clone https://github.com/ghianciulu/mg4-mate.git /src \
+    && cd /src && git checkout "${MATE_REF}" \
     && pip install --no-cache-dir \
        -r /src/poller/requirements.txt \
        -r /src/web/requirements.txt \

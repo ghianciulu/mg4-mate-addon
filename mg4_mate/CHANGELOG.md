@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.6
+
+- Pins the add-on build to MG4 Mate commit `a0ba8ba`.
+- Makes the web server create the static directory before mounting it.
+
 ## 1.0.5
 
 - Rebuilds against MG4 Mate with the required `web/static` directory included.
