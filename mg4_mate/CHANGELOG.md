@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.8
+
+- Adds Home Assistant history import for existing MG4 positions, trips and charge sessions.
+- Improves mobile layout for the remote controls page.
+- Pins the add-on build to MG4 Mate commit `f9c42fc`.
+
 ## 1.0.7
 
 - Adds the MG4 Mate remote controls page backed by Home Assistant services.
