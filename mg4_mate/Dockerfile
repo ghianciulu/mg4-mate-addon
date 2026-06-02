@@ -6,7 +6,7 @@ ARG BUILD_FROM
 FROM ${BUILD_FROM}
 
 # Version of Mate to install (git tag, branch or commit in the main repo/fork).
-ARG MATE_REF=a0ba8ba
+ARG MATE_REF=9a341fc
 
 ENV PYTHONUNBUFFERED=1 \
     DB_PATH=/data/mg4_mate.db
