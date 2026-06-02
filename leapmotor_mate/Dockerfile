@@ -5,8 +5,8 @@
 ARG BUILD_FROM
 FROM ${BUILD_FROM}
 
-# Version of leapmotor-mate to install (git tag in the main repo).
-ARG MATE_REF=v1.0.3
+# Version of Mate to install (git tag or branch in the main repo/fork).
+ARG MATE_REF=mg4-homeassistant
 
 ENV PYTHONUNBUFFERED=1 \
     CERT_DIR=/app/certs \
@@ -19,7 +19,7 @@ WORKDIR /app
 RUN apk add --no-cache bash \
     && apk add --no-cache --virtual .build-deps git build-base libffi-dev openssl-dev \
     && git clone --depth 1 --branch "${MATE_REF}" \
-       https://github.com/ProtossBlaster/leapmotor-mate.git /src \
+       https://github.com/ghianciulu/leapmotor-mate.git /src \
     && pip install --no-cache-dir \
        -r /src/poller/requirements.txt \
        -r /src/web/requirements.txt \

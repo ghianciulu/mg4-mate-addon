@@ -1,8 +1,8 @@
-name: "LeapMotor Mate"
-description: "Trip tracking and remote control for Leapmotor vehicles (B10, C10, T03)"
-version: "1.0.3"
-slug: "leapmotor_mate"
-url: "https://github.com/ProtossBlaster/leapmotor-mate"
+name: "MG4 Mate"
+description: "Trip tracking, charge logging and statistics for MG4 via Home Assistant"
+version: "1.0.4"
+slug: "mg4_mate"
+url: "https://github.com/ghianciulu/leapmotor-mate"
 init: false
 startup: "application"
 boot: "auto"
@@ -20,7 +20,7 @@ map:
 ingress: true
 ingress_port: 4000
 panel_icon: "mdi:car-electric"
-panel_title: "LeapMotor Mate"
+panel_title: "MG4 Mate"
 
 ports:
   4000/tcp: null
@@ -29,6 +29,14 @@ ports_description:
 
 options:
   log_level: "info"
+  VEHICLE_SOURCE: "homeassistant"
+  HA_URL: ""
+  HA_TOKEN: ""
+  HA_ENTITY_PREFIX: ""
 
 schema:
   log_level: "list(trace|debug|info|warning|error|critical)"
+  VEHICLE_SOURCE: "list(homeassistant|leapmotor)"
+  HA_URL: "str"
+  HA_TOKEN: "password"
+  HA_ENTITY_PREFIX: "str"

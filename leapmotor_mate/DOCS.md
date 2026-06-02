@@ -1,53 +1,46 @@
-# LeapMotor Mate
+# MG4 Mate
 
-Trip tracking, charge logging and remote control for Leapmotor vehicles (B10 · C10 · T03), running inside Home Assistant.
+Trip tracking, charge logging and statistics for MG4 vehicles using Home Assistant entities from the SAIC/MG MQTT Gateway.
 
-## Before you start
+## Before You Start
 
-**Use a dedicated Leapmotor account — not the one on your phone.** The Leapmotor
-cloud binds a session per device, so a second client can evict your phone (and
-vice-versa). Create a separate account in the Leapmotor app and share the car
-with it.
+Install and configure the SAIC MQTT Gateway first. The MG4 device should already be visible in Home Assistant with entities such as:
 
-You also need the Leapmotor **app TLS certificate** (the same for everyone, it
-identifies the app, not you): the files `app.crt` and `app.key`, available at
-**https://github.com/markoceri/leapmotor-certs**. You upload them once in the
-setup wizard.
+```text
+sensor.<prefix>_soc
+sensor.<prefix>_range
+sensor.<prefix>_mileage
+device_tracker.<prefix>_vehicle_position
+binary_sensor.<prefix>_vehicle_running
+binary_sensor.<prefix>_battery_charging
+```
 
-## Setup
-
-1. Start the add-on and open its panel (car icon in the sidebar).
-2. **Step 1 — Certificate:** upload `app.crt` and `app.key` (or paste their PEM
-   text).
-3. **Step 2 — Login:** enter your Leapmotor account email, password and
-   operation **PIN**. Your model and battery are auto-detected.
-
-The poller then starts and data begins to appear: overview, trips, charges,
-statistics and remote commands.
+The `<prefix>` is usually the lower-case VIN used in entity ids.
 
 ## Configuration
 
-The add-on options only expose the log level:
+Set these add-on options:
 
 ```yaml
 log_level: info
+VEHICLE_SOURCE: homeassistant
+HA_URL: http://192.168.x.x:8123
+HA_TOKEN: your_home_assistant_long_lived_access_token
+HA_ENTITY_PREFIX: your_lowercase_vin_prefix
 ```
 
-Everything else (polling interval, charge price, language) is configured from
-the web UI under **Settings** — no YAML required.
+Use a local Home Assistant URL when possible. It avoids public DNS and TLS certificate issues.
 
-- **Polling** — parked (default 30 s) and driving (default 10 s). Polling the
-  Leapmotor cloud does **not** wake or drain the car.
+Create `HA_TOKEN` from your Home Assistant profile under **Long-Lived Access Tokens**. Do not use your MG/iSMART password here.
 
-## Data & persistence
+## Data & Persistence
 
-The SQLite database and the uploaded certificate live in the add-on's
-persistent `/data` directory, so they survive restarts and updates.
+The add-on writes trip, charge, position and statistics data into a SQLite database in the persistent `/data` directory. It reuses the Mate web UI for overview, trips, charges and statistics.
 
 ## Notes
 
-This is an unofficial project, not affiliated with Leapmotor. It uses
-reverse-engineered cloud APIs and may break if Leapmotor changes them. Use at
-your own risk.
+- This fork reads Home Assistant states; it does not call the MG/iSMART cloud directly.
+- Trip map quality depends on the refresh interval configured in the SAIC MQTT Gateway.
+- Around 30-40 second updates while driving are enough for useful maps and consumption statistics.
 
-Source & full docs: https://github.com/ProtossBlaster/leapmotor-mate
+Source: https://github.com/ghianciulu/leapmotor-mate
