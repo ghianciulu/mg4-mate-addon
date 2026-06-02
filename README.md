@@ -80,4 +80,4 @@ HA_ENTITY_PREFIX=lsjwh4097rn111393
 
 ## License
 
-[GNU AGPL-3.0](./LICENSE) © Silvio Bressani.
+[GNU AGPL-3.0](./LICENSE) © Angelo La Mazza.
