@@ -29,13 +29,13 @@ HA_ENTITY_PREFIX: your_lowercase_vin_prefix
 The MG4 entity prefix is the part before the sensor suffix. For example:
 
 ```text
-sensor.lsjwh4097rn111393_soc
+sensor.lsjwh4097rnxxxxxx_soc
 ```
 
 uses:
 
 ```text
-HA_ENTITY_PREFIX=lsjwh4097rn111393
+HA_ENTITY_PREFIX=lsjwh4097rnxxxxxx
 ```
 
 ---
@@ -69,13 +69,13 @@ HA_ENTITY_PREFIX: prefisso_vin_minuscolo
 Esempio:
 
 ```text
-sensor.lsjwh4097rn111393_soc
+sensor.lsjwh4097rnxxxxxx_soc
 ```
 
 usa:
 
 ```text
-HA_ENTITY_PREFIX=lsjwh4097rn111393
+HA_ENTITY_PREFIX=lsjwh4097rnxxxxxx
 ```
 
 ## License
