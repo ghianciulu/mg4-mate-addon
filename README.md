@@ -11,7 +11,7 @@ Home Assistant add-on for MG4 trip tracking, charge logging and statistics. It r
 3. Add this URL:
 
    ```text
-   https://github.com/ghianciulu/leapmotor-mate-addon
+   https://github.com/ghianciulu/mg4-mate-addon
    ```
 
 4. Find **MG4 Mate**, click **Install**, then configure the add-on options.
@@ -51,7 +51,7 @@ Add-on Home Assistant per statistiche, viaggi e ricariche MG4. Riusa UI e databa
 3. Aggiungi questo URL:
 
    ```text
-   https://github.com/ghianciulu/leapmotor-mate-addon
+   https://github.com/ghianciulu/mg4-mate-addon
    ```
 
 4. Trova **MG4 Mate**, installa e configura le opzioni.

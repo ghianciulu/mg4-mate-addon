@@ -2,7 +2,7 @@ name: "MG4 Mate"
 description: "Trip tracking, charge logging and statistics for MG4 via Home Assistant"
 version: "1.0.4"
 slug: "mg4_mate"
-url: "https://github.com/ghianciulu/leapmotor-mate"
+url: "https://github.com/ghianciulu/mg4-mate"
 init: false
 startup: "application"
 boot: "auto"
@@ -36,7 +36,7 @@ options:
 
 schema:
   log_level: "list(trace|debug|info|warning|error|critical)"
-  VEHICLE_SOURCE: "list(homeassistant|leapmotor)"
+  VEHICLE_SOURCE: "list(homeassistant)"
   HA_URL: "str"
   HA_TOKEN: "password"
   HA_ENTITY_PREFIX: "str"

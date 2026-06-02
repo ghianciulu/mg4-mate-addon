@@ -1,16 +1,15 @@
 # Home Assistant add-on build.
 # BUILD_FROM is the HA arch-specific Alpine base (see build.json).
-# The application code is pulled from the main repo at a pinned tag, so this
-# add-on repo stays thin and tracks releases of ProtossBlaster/leapmotor-mate.
+# The application code is pulled from the main repo at a pinned tag or branch,
+# so this add-on repo stays thin and tracks MG4 Mate releases.
 ARG BUILD_FROM
 FROM ${BUILD_FROM}
 
 # Version of Mate to install (git tag or branch in the main repo/fork).
-ARG MATE_REF=mg4-homeassistant
+ARG MATE_REF=main
 
 ENV PYTHONUNBUFFERED=1 \
-    CERT_DIR=/app/certs \
-    DB_PATH=/data/leapmotor_mate.db
+    DB_PATH=/data/mg4_mate.db
 
 WORKDIR /app
 
@@ -19,11 +18,11 @@ WORKDIR /app
 RUN apk add --no-cache bash \
     && apk add --no-cache --virtual .build-deps git build-base libffi-dev openssl-dev \
     && git clone --depth 1 --branch "${MATE_REF}" \
-       https://github.com/ghianciulu/leapmotor-mate.git /src \
+       https://github.com/ghianciulu/mg4-mate.git /src \
     && pip install --no-cache-dir \
        -r /src/poller/requirements.txt \
        -r /src/web/requirements.txt \
-    && cp -r /src/poller /src/web /src/certs /app/ \
+    && cp -r /src/poller /src/web /app/ \
     && cp /src/run.sh /run.sh && chmod a+x /run.sh \
     && rm -rf /src \
     && apk del .build-deps

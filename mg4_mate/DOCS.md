@@ -29,7 +29,7 @@ HA_TOKEN: your_home_assistant_long_lived_access_token
 HA_ENTITY_PREFIX: your_lowercase_vin_prefix
 ```
 
-Use a local Home Assistant URL when possible. It avoids public DNS and TLS certificate issues.
+Use a local Home Assistant URL when possible. It avoids public DNS and HTTPS endpoint issues.
 
 Create `HA_TOKEN` from your Home Assistant profile under **Long-Lived Access Tokens**. Do not use your MG/iSMART password here.
 
@@ -43,4 +43,4 @@ The add-on writes trip, charge, position and statistics data into a SQLite datab
 - Trip map quality depends on the refresh interval configured in the SAIC MQTT Gateway.
 - Around 30-40 second updates while driving are enough for useful maps and consumption statistics.
 
-Source: https://github.com/ghianciulu/leapmotor-mate
+Source: https://github.com/ghianciulu/mg4-mate
