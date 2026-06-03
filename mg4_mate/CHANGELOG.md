@@ -1,5 +1,32 @@
 # Changelog
 
+## 1.2.0
+
+- Added auto-merge for trips separated by a short gap (configurable, default 5 min).
+- Added manual merge button on trip detail page to combine adjacent trips.
+- Added IT/EN translations for all new merge UI strings.
+
+## 1.1.2
+
+- Fixed `urllib.error` import missing in HA client (would crash poller on 404).
+- Fixed regen energy accumulation to use real elapsed time between polls instead of hardcoded 10 s.
+- Removed dead `_conn()` function from web DB layer.
+- Live map on overview now refreshes every 30 s together with the status card via HTMX.
+- Optimised trip tree query: aggregation moved to SQLite, reducing Python memory use.
+
+## 1.1.1
+
+- Persistent SQLite connections in web layer (no more per-request `connect()`).
+- Distance-weighted average efficiency in statistics summary.
+- Targeted Home Assistant entity fetch: 27 individual calls in parallel instead of loading all states.
+- Raised charge history default limit from 50 to 500.
+
+## 1.1.0
+
+- Removed broken car-picture card from overview; map now spans full width.
+- Fixed HA history import to use proper DB methods instead of direct SQLite access.
+- Improved mobile layout across trips, charges, statistics and trip detail pages.
+
 ## 1.0.9
 
 - Adds Settings language selection for English and Italian.
