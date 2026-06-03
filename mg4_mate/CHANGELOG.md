@@ -2,6 +2,13 @@
 
 
 
+- Auto-correct charge start SOC: when poller wakes up during an active charge (PARKED_SLEEP gap), use the last pre-plug-in position SOC instead of the current (already-charging) SOC.
+- Added manual charge edit: each charge card now has an inline edit panel to correct start/end times and SOC values; derived fields (duration, energy, cost) are recalculated automatically.
+
+# Changelog
+
+
+
 
 - Fixed trip merge: stale WAL read caused merged trips to appear unchanged after redirect.
 - Fixed trip merge: added hx-swap="none" to merge forms to prevent HTMX swap interference.
