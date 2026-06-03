@@ -3,6 +3,15 @@
 
 
 
+- Fixed trip merge: stale WAL read caused merged trips to appear unchanged after redirect.
+- Fixed trip merge: added hx-swap="none" to merge forms to prevent HTMX swap interference.
+- Added 9 unit tests covering merge correctness and WAL cache invalidation.
+
+# Changelog
+
+
+
+
 - Fixed 500 error on trips page caused by `get_trips_grouped()` converting days dict to list after SQL rewrite.
 - Added regression test for trips grouped structure.
 
