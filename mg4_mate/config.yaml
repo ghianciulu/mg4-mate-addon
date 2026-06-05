@@ -1,6 +1,6 @@
 name: "MG4 Mate"
 description: "Trip tracking, charge logging and statistics for MG4 via Home Assistant"
-version: "1.4.3"
+version: "1.4.4"
 slug: "mg4_mate"
 url: "https://github.com/ghianciulu/mg4-mate"
 init: false

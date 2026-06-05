@@ -3,6 +3,17 @@
 
 
 
+- Fixed trip distance when SAIC gateway was inactive: `finalize_trip` now uses `max(GPS haversine, odometer delta)` so trips where the gateway didn't update speed/position still record the correct distance.
+- Hidden sub-0.1 km trips from the trips list and overview: micro-trips created by `vehicle_running` oscillation while the gateway is inactive no longer appear in the UI.
+- Fixed stale open trip being resumed on addon restart: `_resume_or_close` now checks the last recorded GPS point timestamp; if older than `trip_merge_gap_min`, the orphan is closed and a fresh trip is created instead of continuing the old one.
+- Fixed ghost trip being used as merge candidate: `get_recent_ended_trip` now excludes `untracked=1` trips so the next real drive is never merged into a ghost trip record.
+- Fixed SQLite timestamp comparison: `get_recent_ended_trip` cutoff now uses `T` separator (ISO format) instead of space, preventing `'2026-06-05T11:45...'` from comparing as newer than `'2026-06-05 13:39...'`.
+
+# Changelog
+
+
+
+
 - Added ghost trip detection: when the odometer increases while the car is parked (missed by the SAIC gateway), MG4 Mate automatically creates an untracked trip record with the estimated distance. Untracked trips are shown with a ⚠️ badge in the trips list.
 - Added `ha_automations/saic_gateway_commute_boost.yaml`: one-shot HA script to permanently lower `gateway_inactive_refresh_period` from 86400 s (24 h) to 120 s, preventing the SAIC gateway from missing trip starts when the car wakes from sleep.
 
