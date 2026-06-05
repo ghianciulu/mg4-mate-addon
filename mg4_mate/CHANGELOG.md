@@ -2,6 +2,12 @@
 
 
 
+- Fixed timezone display (improved): timezone now fetched from HA `/api/config` at startup and stored as `display_timezone` setting; `ZoneInfo` used for accurate conversion even when the host OS runs UTC. Added `tzdata` Python package so `ZoneInfo` works in slim Docker containers.
+
+# Changelog
+
+
+
 - Fixed timezone display: all trip/charge timestamps were shown in UTC instead of local time. SQLite queries now use the `'localtime'` modifier; Python formatting uses `astimezone()`; Jinja2 templates use a new `localts` filter.
 
 # Changelog
