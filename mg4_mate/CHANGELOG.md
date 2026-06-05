@@ -2,6 +2,12 @@
 
 
 
+- Fixed timezone display: all trip/charge timestamps were shown in UTC instead of local time. SQLite queries now use the `'localtime'` modifier; Python formatting uses `astimezone()`; Jinja2 templates use a new `localts` filter.
+
+# Changelog
+
+
+
 - Added Charts page (`/charts`) with four analytical sections:
   - SOC history linechart with 7d / 30d / 90d / all-time period selector.
   - Monthly charge costs stacked bar chart grouped by charge type (Home / AC / Fast / HPC).
