@@ -2,6 +2,12 @@
 
 
 
+- Added ghost trip detection: when the odometer increases while the car is parked (missed by the SAIC gateway), MG4 Mate automatically creates an untracked trip record with the estimated distance. Untracked trips are shown with a ⚠️ badge in the trips list.
+
+# Changelog
+
+
+
 - Fixed timezone display (improved): timezone now fetched from HA `/api/config` at startup and stored as `display_timezone` setting; `ZoneInfo` used for accurate conversion even when the host OS runs UTC. Added `tzdata` Python package so `ZoneInfo` works in slim Docker containers.
 
 # Changelog
