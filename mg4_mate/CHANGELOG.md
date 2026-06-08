@@ -2,6 +2,14 @@
 
 
 
+- Added maintenance tracker: MG4-specific 10-item service schedule (tires, brake fluid, cabin filter, A/C, HV battery, full inspection, etc.) with overdue/upcoming/OK status, inline "Log service" form, and full service history log.
+- Added trip comparison: "Similar trips" section on the trip detail page surfaces past trips with the same route (haversine start/end proximity ≤ 5 km), comparable distance (±40%), and similar time-of-day (±4 h), scored 0–100 with efficiency delta colour-coded green/red.
+- Refactored DB migration system: replaced 40-line ad-hoc `ALTER TABLE` block in `poller/db.py.__init__` with a versioned `MIGRATIONS` list + `schema_migrations` table, making future schema changes one-liner additions.
+
+# Changelog
+
+
+
 
 - Fixed trip distance when SAIC gateway was inactive: `finalize_trip` now uses `max(GPS haversine, odometer delta)` so trips where the gateway didn't update speed/position still record the correct distance.
 - Hidden sub-0.1 km trips from the trips list and overview: micro-trips created by `vehicle_running` oscillation while the gateway is inactive no longer appear in the UI.
